@@ -1,0 +1,35 @@
+import string
+
+alphabet = string.ascii_letters  #alphabet with lower and upper case letters. 
+lst= []
+
+for count, letter in enumerate(alphabet): # create a list of letters with their respective indecies
+    lst.append((count, letter))
+
+string = "hRI4VxSWCAfDlqWd"
+
+def rot13(message): 
+    lst_char= []
+    for char in message: # iterate through each character of the string
+        for tup in lst: # iterate through the alphabet and the respective indices
+            index = tup[0]
+            alphabet_letter = tup[1]
+
+            if char == alphabet_letter and char.isupper() == False:
+                rot13_index = (index + 13) % 26 # calculate the rot13 index to change the letter
+                lst_char.append(lst[rot13_index][1]) #append it to the new lst
+
+            elif char == alphabet_letter and char.isupper() == True: #do the same but with upper case characters
+                rot13_index = (index + 13) % 26
+                letter_str= lst[rot13_index][1]
+                upper_letter = letter_str.upper()                          
+                lst_char.append(upper_letter)
+
+            elif char not in alphabet: #append all non characters letters
+                lst_char.append(char)
+                break
+    
+    return "".join(lst_char)  
+        
+
+print(rot13(string))
