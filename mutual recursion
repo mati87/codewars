@@ -1,0 +1,11 @@
+def F(number):    
+    if number == 0:
+        return 1
+    elif number > 0:
+        return number - M(F(number - 1))
+
+def M(number):
+    if number == 0:
+        return 0
+    elif number > 0:
+        return number - F(M(number - 1))
