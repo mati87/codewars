@@ -1,0 +1,11 @@
+def accum(string):    
+    result = ""
+    for count, char in enumerate(string, start=1):       
+        accum_char = char  * count + '-' #accumulate the number of chars accordingly. 
+        test1 = accum_char.title() #Capitalize the first letter and make the rest lower.        
+        result += test1        
+    new_result = result[:-1] #errase the last hiphen
+    return new_result  
+   
+
+print(accum('ZpglnRxqenU'))
